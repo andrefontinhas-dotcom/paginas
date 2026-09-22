@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ISA — Suporte Técnico Interno | Atento</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #000000;
+    --purple: #241733;
+    --blue: #8AD2F5;
+    --white: #ffffff;
+    --gray: #b9b9c2;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Roboto', sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, .logo, .btn {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* HEADER */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 6vw;
+    background: var(--black);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .logo {
+    height: 48px;
+    width: auto;
+    display: block;
+  }
+
+  .menu-icon {
+    width: 22px;
+    height: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .menu-icon span {
+    display: block;
+    height: 2px;
+    background: var(--white);
+    border-radius: 2px;
+  }
+
+  .header-spacer {
+    width: 22px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1.5px solid var(--blue);
+    color: var(--blue);
+    background: transparent;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 12px 26px;
+    border-radius: 46px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+  }
+  .btn:hover {
+    background: var(--blue);
+    color: var(--black);
+  }
+  .btn.solid {
+    background: var(--blue);
+    color: var(--black);
+  }
+  .btn.solid:hover {
+    background: transparent;
+    color: var(--blue);
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 78vh;
+    display: flex;
+    align-items: center;
+    padding: 6vw;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .hero-text {
+    flex: 1 1 420px;
+    max-width: 620px;
+  }
+  .hero-text h1 {
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .hero-text p {
+    color: var(--gray);
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+  .hero-text .highlight {
+    color: var(--blue);
+    font-weight: 800;
+  }
+
+  .hero-image {
+    flex: 1 1 320px;
+    display: flex;
+    justify-content: center;
+    max-width: 420px;
+  }
+  .hero-image img {
+    width: 100%;
+    max-width: 380px;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(138, 210, 245, 0.15);
+  }
+
+  /* FEATURES */
+  .features {
+    background: var(--purple);
+    padding: 70px 6vw;
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  .feature {
+    max-width: 220px;
+  }
+  .feature .icon {
+    font-size: 34px;
+    margin-bottom: 14px;
+  }
+  .feature h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  .feature p {
+    color: var(--gray);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* TOPICS */
+  .topics {
+    padding: 80px 6vw;
+    text-align: center;
+  }
+  .topics h2 {
+    font-size: clamp(26px, 4vw, 36px);
+    margin-bottom: 12px;
+  }
+  .topics > p {
+    color: var(--gray);
+    margin-bottom: 44px;
+  }
+  .topic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto 44px;
+  }
+  .topic-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(138,210,245,0.25);
+    border-radius: 18px;
+    padding: 28px 20px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .topic-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--blue);
+  }
+  .topic-card .emoji { font-size: 30px; margin-bottom: 10px; }
+  .topic-card h3 { font-size: 15px; font-weight: 600; }
+
+  footer {
+    padding: 40px 6vw 60px;
+    text-align: center;
+    color: var(--gray);
+    font-size: 13px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  @media (max-width: 640px) {
+    .hero { padding: 8vw 6vw; text-align: center; justify-content: center; }
+    .hero-text { text-align: center; }
+    .features { gap: 36px; }
+  }
+
+  /* ===== Ajustes visuais do widget da ISA (Cognigy Webchat) ===== */
+  /* Corrige um bug do widget: a linha de nome/hora das mensagens fica
+     com fundo preto porque herda a variável --black em vez de transparente. */
+  .message-header {
+    background-color: transparent !important;
+  }
+
+  /* Botões secundários (Start conversation / Previous conversations /
+     Começar atendimento): azul escuro Atento + texto laranja. */
+  .webchat-homescreen-send-button,
+  .webchat-input-get-started-button {
+    background-color: #12234A !important;
+    border-color: #12234A !important;
+    color: #F5821F !important;
+  }
+  .webchat-homescreen-previous-conversation-button {
+    background-color: transparent !important;
+    border-color: #12234A !important;
+    color: #F5821F !important;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="menu-icon"><span></span><span></span><span></span></div>
+  <img class="logo" src="atento-logo.png" alt="Atento" />
+  <div class="header-spacer" aria-hidden="true"></div>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>Impulsionado por IA.<br>Conectado por pessoas.</h1>
+    <p>A <span class="highlight">ISA</span> é a assistente virtual de suporte técnico interno da Atento. Tire dúvidas sobre cabos, CPU, Teams, OneDrive, internet e VPN — na hora, direto no chat.</p>
+  </div>
+  <div class="hero-image">
+    <img src="https://raw.githubusercontent.com/andrefontinhas-dotcom/paginas/main/AvatarSA_Atento.png" alt="ISA - Assistente virtual de suporte técnico da Atento" />
+  </div>
+</section>
+
+<section class="features">
+  <div class="feature">
+    <div class="icon">👥</div>
+    <h3>Pessoas no centro</h3>
+    <p>Suporte pensado para facilitar o dia a dia de quem trabalha na Atento.</p>
+  </div>
+  <div class="feature">
+    <div class="icon">🤖</div>
+    <h3>IA que transforma</h3>
+    <p>Respostas rápidas e precisas, baseadas na base de conhecimento oficial.</p>
+  </div>
+  <div class="feature">
+    <div class="icon">🌐</div>
+    <h3>Experiências sem fronteiras</h3>
+    <p>Atendimento disponível sempre que você precisar, em qualquer lugar.</p>
+  </div>
+</section>
+
+<section class="topics">
+  <h2>Com o que a ISA pode te ajudar?</h2>
+  <p>Escolha um tema ou descreva o problema direto no chat.</p>
+  <div class="topic-grid">
+    <div class="topic-card">
+      <div class="emoji">🔌</div>
+      <h3>Cabos de vídeo, rede e energia</h3>
+    </div>
+    <div class="topic-card">
+      <div class="emoji">🖥️</div>
+      <h3>Problemas na CPU</h3>
+    </div>
+    <div class="topic-card">
+      <div class="emoji">💬☁️</div>
+      <h3>Teams e OneDrive</h3>
+    </div>
+    <div class="topic-card">
+      <div class="emoji">🌐</div>
+      <h3>Internet, proxy e FortiGuard</h3>
+    </div>
+    <div class="topic-card">
+      <div class="emoji">🔒</div>
+      <h3>VPN e Microsoft Authenticator</h3>
+    </div>
+  </div>
+</section>
+
+<footer>
+  ISA — Suporte Técnico Interno · Atento © 2026
+</footer>
+
+<script src="https://github.com/Cognigy/Webchat/releases/latest/download/webchat.js"></script>
+<script>
+  // Sem botão próprio na página: o ícone flutuante do próprio widget
+  // é quem abre o chat, então iniciamos o widget assim que a página carrega.
+  var ISA_CONFIG_URL = "https://cognigy-endpoint-na1.nicecxone.com/c611c858b2070ecd6af6b50f085b2c89be6ea4230eaa5ebe9a112feda1d88e03";
+
+  (function startIsaWebchat() {
+    if (typeof window.initWebchat === 'function') {
+      window.initWebchat(ISA_CONFIG_URL);
+    } else {
+      var tries = 0;
+      var retry = setInterval(function () {
+        tries++;
+        if (typeof window.initWebchat === 'function') {
+          clearInterval(retry);
+          window.initWebchat(ISA_CONFIG_URL);
+        } else if (tries > 50) {
+          clearInterval(retry);
+        }
+      }, 100);
+    }
+  })();
+</script>
+
+</body>
+</html>
